@@ -17,9 +17,9 @@ import com.actionbarsherlock.view.MenuItem;
 
 public class BeerCounterActivity extends SherlockActivity {
 
-	int beerCount;
-
 	TextView beerCountView;
+
+	int beerCount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,26 +41,26 @@ public class BeerCounterActivity extends SherlockActivity {
 		loadBeerCount();
 	}
 
-	void loadBeerCount() {
-		new AsyncTask<Void, Void, Integer>() {
-
-			@Override
-			protected Integer doInBackground(Void... params) {
-				SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-				int beerCount = preferences.getInt("beerCount", 0);
-				return beerCount;
-			}
-
-			@Override
-			protected void onPostExecute(Integer beerCount) {
-				beerCountLoaded(beerCount);
-			}
-		}.execute();
+	void addBeerButtonClicked() {
+		beerCount++;
+		saveBeerCount(beerCount);
+		updateBeerViews();
 	}
 
-	void beerCountLoaded(int beerCount) {
-		this.beerCount = beerCount;
-		updateBeerViews();
+	void saveBeerCount(final int beerCount) {
+
+		new AsyncTask<Void, Void, Void>() {
+
+			@Override
+			protected Void doInBackground(Void... params) {
+				getPreferences(MODE_PRIVATE) //
+						.edit() //
+						.putInt("beerCount", beerCount) //
+						.commit();
+				return null;
+			}
+
+		}.execute();
 	}
 
 	private void updateBeerViews() {
@@ -84,27 +84,26 @@ public class BeerCounterActivity extends SherlockActivity {
 		}
 	}
 
-	void addBeerButtonClicked() {
-		beerCount++;
-		saveBeerCount(beerCount);
-		updateBeerViews();
-	}
-
-	void saveBeerCount(final int beerCount) {
-
-		new AsyncTask<Void, Void, Void>() {
+	void loadBeerCount() {
+		new AsyncTask<Void, Void, Integer>() {
 
 			@Override
-			protected Void doInBackground(Void... params) {
-				getPreferences(MODE_PRIVATE) //
-						.edit() //
-						.putInt("beerCount", beerCount) //
-						.commit();
-				return null;
+			protected Integer doInBackground(Void... params) {
+				SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+				int beerCount = preferences.getInt("beerCount", 0);
+				return beerCount;
 			}
 
+			@Override
+			protected void onPostExecute(Integer beerCount) {
+				beerCountLoaded(beerCount);
+			}
 		}.execute();
+	}
 
+	void beerCountLoaded(int beerCount) {
+		this.beerCount = beerCount;
+		updateBeerViews();
 	}
 
 	@Override
