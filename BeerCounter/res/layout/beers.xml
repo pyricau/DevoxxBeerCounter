@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/fries_background"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/addBeerButton"
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/plus_beer"
+        android:gravity="center"
+        android:shadowColor="#7d1417"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:text="@string/add_beer"
+        android:textColor="#ffffff"
+        android:textSize="30dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/addBeerButton"
+        android:layout_marginBottom="8dp" >
+
+        <TextView
+            android:id="@+id/beerCountView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,7 +1,14 @@
 <resources>
 
-	<string name="app_name">BeerCounter</string>
-	<string name="hello_world">Hello world!</string>
-	<string name="menu_settings">Settings</string>
+	<string name="app_name">Devoxx BeerCounter</string>
+	<string name="emergency">Emergency</string>
+<!-- 	<string name="beers_title">"<![CDATA[<font color="#e75900"><b>%s</b></font> <font color="#ea6f00">b</font><font color="#f59300">e</font><font color="#f6a400">e</font><font color="#fbb200">r</font><font color="#fbba00">s</font> at Devoxx!]]>"</string> -->
 
+	<plurals name="beers_title">
+        <item quantity="one">"<![CDATA[<font color="#e75900"><b>One</b></font> <font color="#ea6f00">b</font><font color="#f59300">e</font><font color="#f6a400">e</font><font color="#fbb200">r</font> at Devoxx!]]>"</item>
+        <item quantity="other">"<![CDATA[<font color="#e75900"><b>%d</b></font> <font color="#ea6f00">b</font><font color="#f59300">e</font><font color="#f6a400">e</font><font color="#fbb200">r</font><font color="#fbba00">s</font> at Devoxx!]]>"</item>
+    </plurals>
+        <string name="add_beer">Add Beer</string>
+        <string name="still_sober">Still sober!</string>
+	
 </resources>
